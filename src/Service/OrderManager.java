@@ -34,7 +34,9 @@ public class OrderManager {
 
     public void printAllOrder() {
         System.out.println("======== All Orders ========");
-        System.out.println(allOrders);
+        for (int i = 0; i < allOrders.size(); i++) {
+            System.out.println(allOrders.get(i));
+        }
         System.out.println("============================");
         System.out.println();
     }
@@ -89,22 +91,14 @@ public class OrderManager {
 
     public void printCancelledOrders() {
         System.out.println("======== Cancelled Orders ========");
-        System.out.println(cancelledOrders);
+        for (int i = 0; i < cancelledOrders.size(); i++) {
+            System.out.println(cancelledOrders.get(i));
+        }
         System.out.println("==================================");
     }
 
     public void printOrderQueue() {
         orderQueue.printAllOrders();
-    }
-
-    public void printOrderDetail(Order order) {
-        if (order != null) {
-            System.out.println("======== Order Detail ========");
-            System.out.println(order);
-            System.out.println("==============================");
-        } else {
-            System.out.println("Order not found.");
-        }
     }
 
 
