@@ -1,5 +1,5 @@
 package Model;
-import ADT.arrayList.ArrayListADT;
+
 
 public class Book {
     private String title;
@@ -59,6 +59,7 @@ public class Book {
         return this.category;
     }
 
+    //Override the toString method
     @Override
     public String toString() {
         return title + " by " + author + " - $" + price + " [Category: " + category + "]";

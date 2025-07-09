@@ -2,11 +2,11 @@ package Service;
 
 import ADT.arrayList.ArrayListADT;
 import Model.Book;
-import Model.Order;
 
 public class BookLibrary {
     private ArrayListADT<Book> books;
 
+    //Constructor
     public BookLibrary() {
         books = new ArrayListADT<>();
         loadBooks();
@@ -36,12 +36,14 @@ public class BookLibrary {
 
     }
 
+    //Print all books in arraylist
     public void printAllBooks() {
-        for (int i = 0; i < books.size(); i++) {
+        for (int i = 0; i < books.size(); i++) {                //Loop through all books in "books" to get book detail
             System.out.println(i+1 + ". " + books.get(i));
         }
     }
 
+    //Getters
     public int size() {
         return books.size();
     }

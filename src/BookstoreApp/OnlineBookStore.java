@@ -7,22 +7,22 @@ import Model.Order;
 import Model.OrderBook;
 import Service.BookLibrary;
 import Service.OrderManager;
-
 import java.util.Scanner;
 
 
 public class OnlineBookStore {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);        //Create a Scanner object to read user input
 
-        OrderManager manager = new OrderManager();
-        BookLibrary books = new BookLibrary();
+        OrderManager manager = new OrderManager();  //Initialize order manager to handle order
+        BookLibrary books = new BookLibrary();      //Initialize book library (contains available books)
 
 
 
-        boolean running = true;
+        boolean running = true;     //Flag to control the main loop
+        //Main program loop
         do {
-            String[] menu = {
+            String[] menu = {       //Menu options to display to the user
                     "======== Online Bookstore ========",
                     "1. Create new order",
                     "2. View all orders",
@@ -34,20 +34,23 @@ public class OnlineBookStore {
                     "8. Search order (by ID or Name/Phone)",
                     "9. Exit"
             };
-            for (String i : menu) {
+            for (String i : menu) {     //Print each line of the menu
                 System.out.println(i);
             }
 
-            String userChoice = sc.nextLine();
+            String userChoice = sc.nextLine();       //Read the user's choice
+            //Perform an action based on user's input
             switch (userChoice) {
-                case "1":
+                case "1":       //Create a new order
 
                     String fullname, address, phoneNumber;
+                    //Get customer name
                     while (true) {
                         System.out.print("Enter your full name, please!: ");
                         fullname = sc.nextLine().trim();
                         System.out.println();
 
+                        //Validate name
                         if (fullname.isEmpty()) {
                             System.out.println("Your name cannot be empty.\n");
                         } else {
@@ -55,11 +58,13 @@ public class OnlineBookStore {
                         }
                     }
 
+                    //Get customer address
                     while (true) {
                         System.out.print("Enter your address, please!: ");
                         address = sc.nextLine().trim();
                         System.out.println();
 
+                        //Validate address
                         if (address.isEmpty()) {
                             System.out.println("Your address cannot be empty.\n");
                         } else {
@@ -68,11 +73,13 @@ public class OnlineBookStore {
 
                     }
 
+                    //Get customer phone number
                     while (true) {
                         System.out.print("Enter your phone number, please!: ");
                         phoneNumber = sc.nextLine().trim();
                         System.out.println();
 
+                        //Validate phone number (must be digits only, 9–15 characters)
                         if (phoneNumber.isEmpty()) {
                             System.out.println("Your phone number cannot be empty.\n");
                         } else if (!phoneNumber.matches("\\+?\\d{9,15}")) {
@@ -81,19 +88,23 @@ public class OnlineBookStore {
                             break;
                         }
                     }
+                    //Create Customer object from input
                     Customer customer = new Customer(fullname, address, phoneNumber);
 
-
+                    //List to store selected books in the order
                     ArrayListADT<OrderBook> selectedBooks = new ArrayListADT<>();
 
+                    //Book selection loop
                     while (true) {
-                        books.printAllBooks();
+                        books.printAllBooks();      //Show all available books
 
-                        System.out.println("Select book number (1-" + books.size() + ") (or 0 to finish): ");
+                        //Ask user to select a book
+                        System.out.print("Select book number (1-" + books.size() + ") (or 0 to finish): ");
 
                         String input = sc.nextLine().trim();
                         int choice;
 
+                        //Validate book selection input
                         try {
                             choice = Integer.parseInt(input);
                         } catch (NumberFormatException e) {
@@ -101,52 +112,57 @@ public class OnlineBookStore {
                             continue;
                         }
 
+                        //Break loop if user finishes selection
                         if (choice == 0) {
                             break;
                         }
 
-                        if (choice < 1 || choice > books.size()) {
+                        if (choice < 1 || choice > books.size()) {      //Check if selected book number is valid
                             System.out.println("Invalid book number.\n");
                             continue;
                         }
 
-                        Book selectedBook = books.get(choice - 1);
-                        System.out.print("Enter quantity for \"" + selectedBook.getTitle() + "\": ");
+                        Book selectedBook = books.get(choice - 1);      //Get selected book
+                        System.out.print("Enter quantity for \"" + selectedBook.getTitle() + "\": ");   //Ask user for quantity
 
                         String quan = sc.nextLine().trim();
                         int quantity;
 
-                        try {
+                        try {       //Validate quantity input
                             quantity = Integer.parseInt(quan);
                         } catch (NumberFormatException e) {
                             System.out.println("Invalid input. Please enter a number.\n");
                             continue;
                         }
 
-
+                        //Check if quantity is within available range
                         if (quantity <= 0 || quantity > selectedBook.getQuantity()) {
                             System.out.println("Invalid quantity. Available: " + selectedBook.getQuantity() + "\n");
                             continue;
                         }
 
+                        //Add the selected book to order list
                         selectedBooks.add(new OrderBook(selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getPrice(), quantity));
 
+                        //Reduce the quantity of the book in the library
                         selectedBook.setQuantity(selectedBook.getQuantity() - quantity);
-                        System.out.println("Added: " + selectedBook.getTitle() + " x" + quantity + "\n");
+                        System.out.println("Added: " + selectedBook.getTitle() + " x" + quantity + "\n");   //Confirm added book
                         }
 
+
+                        //If any books were selected, create the order
                         if (!selectedBooks.isEmpty()) {
                             manager.createOrder(customer, selectedBooks);
                             System.out.println("Order created successfully!\n");
                             System.out.println();
-                        } else {
+                        } else {    //No books selected
                             System.out.println("Please select a book first.");
                             System.out.println();
                         }
                     break;
 
 
-                case "2":
+                case "2":       //View all orders
                     if (!manager.isAllOrdersEmpty()) {
                         manager.printAllOrder();
                     } else {
@@ -156,7 +172,7 @@ public class OnlineBookStore {
                     break;
 
 
-                case "3":
+                case "3":       //Process the next order in queue
                     if (!manager.isAllOrdersEmpty()) {
                         manager.processNextOrder();
                     } else {
@@ -166,7 +182,7 @@ public class OnlineBookStore {
                     break;
 
 
-                case "4":
+                case "4":       //View all orders in the queue
                     if (!manager.isOrderQueueEmpty()) {
                         manager.printOrderQueue();
                     }else {
@@ -176,7 +192,7 @@ public class OnlineBookStore {
                     break;
 
 
-                case "5":
+                case "5":        //View the order history (processed orders)
                     if (!manager.isOrderHistoryEmpty()) {
                         manager.printOrderHistory();
                     }else {
@@ -186,7 +202,7 @@ public class OnlineBookStore {
                     break;
 
 
-                case "6":
+                case "6":       //Cancel the most recent processed order
                     if (!manager.isOrderHistoryEmpty()) {
                         manager.cancelLastOrder();
                     }else {
@@ -196,7 +212,7 @@ public class OnlineBookStore {
                     break;
 
 
-                case "7":
+                case "7":        //View cancelled orders
                     if (!manager.isCancelledOrderEmpty()) {
                         manager.printCancelledOrders();
                     }else {
@@ -206,12 +222,13 @@ public class OnlineBookStore {
                      break;
 
 
-                case "8":
+                case "8":       //Search for an order by ID or Name/Phone
                     System.out.println("Search by: \n 1. Order ID \n 2. Name or Phone");
 
                     String opt = sc.nextLine().trim();
                     int option;
 
+                    //Validate search option input
                     try {
                         option = Integer.parseInt(opt);
                     } catch (NumberFormatException e) {
@@ -219,7 +236,7 @@ public class OnlineBookStore {
                         continue;
                     }
 
-                    if (option == 1) {
+                    if (option == 1) {       //Search by Order ID
                         System.out.print("Enter Order ID: ");
 
                         String id = sc.nextLine().trim();
@@ -232,22 +249,22 @@ public class OnlineBookStore {
                             continue;
                         }
 
-                        Order order = manager.searchByOrderId(orderId);
+                        Order order = manager.searchById(orderId);      //Search order and display result
                             if (order != null) {
                                 System.out.println(order);
                             } else {
                                 System.out.println("Order not found.");
                         }
-                    } else {
+                    } else {        //Search by Name or Phone
                         System.out.print("Enter name or phone: ");
                         String input = sc.nextLine();
 
-                        ArrayListADT<Order> orders = manager.searchByNameOrPhone(input);
+                        ArrayListADT<Order> orders = manager.searchByNOrP(input);
 
                         if (orders == null || orders.isEmpty()) {
                             System.out.println("Order not found.");
                         } else {
-                            for (int i = 0; i < orders.size(); i++) {
+                            for (int i = 0; i < orders.size(); i++) {       //Print all matched orders
                                 System.out.println(orders.get(i));
                             }
                         }
@@ -255,15 +272,15 @@ public class OnlineBookStore {
                     break;
 
 
-                case "9":
+                case "9":       //Exit the application
                     System.out.println("Exiting... Thank you!");
                     running = false;
                     break;
-                default:
+                default:        //Invalid menu choice
                     System.out.println("Invalid option. Please select a valid option (1-9).");
                     break;
             }
-        } while (running);
+        } while (running);      //Repeat until user chooses to exit
     }
 }
 

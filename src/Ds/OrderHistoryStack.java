@@ -1,17 +1,16 @@
 package Ds;
 
-import ADT.arrayList.ArrayListADT;
-import Model.Customer;
 import Model.Order;
-import Model.OrderBook;
 
 public class OrderHistoryStack {
     public ADT.linkedStack.linkedStackADT<Order> stack = new ADT.linkedStack.linkedStackADT<>();
 
+    //Setter
     public void push(Order order) {
         stack.push(order);
     }
 
+    //Getters
     public Order pop() {
         return stack.pop();
     }
@@ -28,6 +27,7 @@ public class OrderHistoryStack {
         return stack.isEmpty();
     }
 
+    //Method to print all orders
     public void printAllOrders() {
         System.out.println("======== Cancelled Orders ========");
         System.out.println(stack);

@@ -38,13 +38,9 @@ public class Customer {
         return this.phoneNumber;
     }
 
+    //Override the toString method
     @Override
     public String toString() {
         return name + " - " + address + " - " + phoneNumber;
     }
-
-//    public static void main(String[] args) {
-//        Customer customer1 = new Customer("Brian", "Son Tra, Da Nang", "0369235524");
-//        System.out.println(customer1);
-//    }
 }

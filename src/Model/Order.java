@@ -6,9 +6,6 @@ import java.time.format.DateTimeFormatter;
 import Algorithms.BookSorter;
 
 
-import static Algorithms.BookSorter.insertionSortByPrice;
-import static Algorithms.BookSorter.insertionSortByTitle;
-
 public class Order {
     private static int counter = 1;
 
@@ -68,6 +65,7 @@ public class Order {
         return total;
     }
 
+    //Override the toString method
     @Override
     public String toString() {
         BookSorter.insertionSortByPrice(books);
@@ -89,29 +87,4 @@ public class Order {
 //        sb.append("]");
         return sb.toString();
     }
-
-//    public static void main(String[] args) {
-//        Customer customer1 = new Customer("Brian", "Da Nang", "0369235524");
-//        OrderBook book1 = new OrderBook("Haha", "Brian", 1.23, 2);
-//        OrderBook book2 = new OrderBook("aihi", "Brian", 1.39, 7);
-//        OrderBook book3 = new OrderBook("Bray", "Brian", 1.22, 3);
-//        ArrayListADT<OrderBook> books = new ArrayListADT<>();
-//        books.add(book1);
-//        books.add(book2);
-//        insertionSortByPrice(books);
-//
-//
-//        Order order = new Order(customer1, books);
-//        System.out.println(order);
-//
-//        Customer customer2 = new Customer("Brian", "Da Nang", "0369235524");
-//        ArrayListADT<OrderBook> books1 = new ArrayListADT<>();
-//        books1.add(book1);
-//        books1.add(book2);
-//        books1.add(book3);
-//        Order order1 = new Order(customer2, books1);
-//        order1.setStatus(OrderStatus.PROCESSING);
-//        insertionSortByTitle(books1);
-//        System.out.println(order1);
-//    }
 }
