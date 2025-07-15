@@ -18,8 +18,8 @@ public class Order {
     //Constructor
     public Order(Customer customer, ArrayListADT<OrderBook> books) {
         this.orderId = counter;
-        this.customer = customer;
-        this.books = books;
+        setBooks(books);
+        setCustomer(customer);
         this.status = OrderStatus.PENDING;
         this.orderTime = LocalDateTime.now();
         counter++;

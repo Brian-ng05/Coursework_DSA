@@ -1,10 +1,7 @@
 package BookstoreApp;
 
 import ADT.arrayList.ArrayListADT;
-import Model.Book;
-import Model.Customer;
-import Model.Order;
-import Model.OrderBook;
+import Model.*;
 import Service.BookLibrary;
 import Service.OrderManager;
 import java.util.Scanner;

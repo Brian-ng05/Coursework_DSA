@@ -1,8 +1,6 @@
 package Service;
 
 import ADT.arrayList.ArrayListADT;
-import static Algorithms.BookSorter.insertionSortByTitle;
-import static Algorithms.BookSorter.insertionSortByPrice;
 import static Algorithms.BookSearcher.searchByOrderId;
 import static Algorithms.BookSearcher.searchByNameOrPhone;
 import Ds.OrderHistoryStack;
@@ -44,14 +42,6 @@ public class OrderManager {
         System.out.println();
     }
 
-    public void sortByTitle(Order order) {
-        ArrayListADT<OrderBook> books = order.getBooks();
-        insertionSortByTitle(books);
-    }
-    public void sortByPrice(Order order) {
-        ArrayListADT<OrderBook> books = order.getBooks();
-        insertionSortByPrice(books);
-    }
 
     //Method to search order by id
     public Order searchById(int orderId) {
@@ -62,13 +52,6 @@ public class OrderManager {
         return searchByNameOrPhone(allOrders, input);
     }
 
-
-    public void updateStatus(int orderId, OrderStatus status) {
-        Order order = searchById(orderId);
-        if (order != null) {
-            order.setStatus(status);
-        }
-    }
 
     //Method to update the status of order in queue
     public void processNextOrder() {

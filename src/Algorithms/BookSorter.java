@@ -1,18 +1,19 @@
 package Algorithms;
 
 import ADT.arrayList.ArrayListADT;
+import Model.Book;
 import Model.OrderBook;
 
 public class BookSorter {
 
     //Sorts the given list of OrderBook objects in ascending order by title
-    public static void insertionSortByTitle(ArrayListADT<OrderBook> orders) {
+    public static void insertionSortByTitle(ArrayListADT<Book> orders) {
 
         //Start from the second element (i = 1), assuming the first one is already sorted
         for (int i = 1; i < orders.size(); i++) {
 
             //Store the current element to be positioned
-            OrderBook currentOrder = orders.get(i);
+            Book currentOrder = orders.get(i);
             int j = i -1;
 
             //Move elements that are greater than currentOrder (based on title) one position ahead

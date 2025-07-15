@@ -1,6 +1,7 @@
 package Service;
 
 import ADT.arrayList.ArrayListADT;
+import Algorithms.BookSorter;
 import Model.Book;
 
 public class BookLibrary {
@@ -38,6 +39,7 @@ public class BookLibrary {
 
     //Print all books in arraylist
     public void printAllBooks() {
+        BookSorter.insertionSortByTitle(books);
         for (int i = 0; i < books.size(); i++) {                //Loop through all books in "books" to get book detail
             System.out.println(i+1 + ". " + books.get(i));
         }
