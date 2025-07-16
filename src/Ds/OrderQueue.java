@@ -35,10 +35,5 @@ public class OrderQueue {
         System.out.println("==========================");
     }
 
-    //Override the toString method
-    @Override
-    public String toString() {
-        return queue.toString();
-    }
 
 }

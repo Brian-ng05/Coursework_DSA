@@ -34,11 +34,5 @@ public class OrderHistoryStack {
         System.out.println("==================================");
     }
 
-    @Override
-    public String toString() {
-        return stack.toString();
-    }
-
-
 }
 

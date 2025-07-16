@@ -29,7 +29,8 @@ public class OnlineBookStore {
                     "6. Cancel last processed order",
                     "7. View cancelled orders",
                     "8. Search order (by ID or Name/Phone)",
-                    "9. Exit"
+                    "9. Exit",
+                    "Select option by enter a number from 1 to 9."
             };
             for (String i : menu) {     //Print each line of the menu
                 System.out.println(i);
