@@ -29,9 +29,9 @@ public class OrderHistoryStack {
 
     //Method to print all orders
     public void printAllOrders() {
-        System.out.println("======== Cancelled Orders ========");
+        System.out.println("======== Orders History ========");
         System.out.println(stack);
-        System.out.println("==================================");
+        System.out.println("================================");
     }
 
 }

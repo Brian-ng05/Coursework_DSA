@@ -33,4 +33,9 @@ public class OrderBook  {
         return this.price * this.quantity;
     }
 
+    //Override the toString method
+    @Override
+    public String toString() {
+        return (title + " by " + author + " x" + quantity);
+    }
 }
