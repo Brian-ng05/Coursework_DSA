@@ -29,25 +29,8 @@ public class OrderBook  {
     }
 
     //Getters
-    public String getTitle() {
-        return this.title;
-    }
-    public String getAuthor() {
-        return this.author;
-    }
-    public double getPrice() {
-        return this.price;
-    }
-    public int getQuantity() {
-        return this.quantity;
-    }
     public double getTotalPrice() {
         return this.price * this.quantity;
     }
 
-    //Override the toString method
-    @Override
-    public String toString() {
-        return (title + " by " + author + " x" + quantity);
-    }
 }

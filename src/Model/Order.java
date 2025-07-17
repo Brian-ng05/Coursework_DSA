@@ -71,7 +71,6 @@ public class Order {
         BookSorter.insertionSortByPrice(books);
 
         StringBuilder sb = new StringBuilder();
-//        sb.append("[");
         sb.append("Order ID: " + orderId + "\n");
         sb.append("Customer: " + customer + "\n");
         sb.append("Books:\n");
@@ -84,7 +83,6 @@ public class Order {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         sb.append("Order Time: ").append(orderTime.format(formatter)).append("\n");
         sb.append("Status: " + status + "\n");
-//        sb.append("]");
         return sb.toString();
     }
 }
