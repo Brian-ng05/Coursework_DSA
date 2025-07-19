@@ -54,4 +54,17 @@ public class BookLibrary {
         return books.get(i);
     }
 
+
+//    public static void main(String[] args) {
+//        System.out.println("=== Test 1: Load and display all books ===");
+//        BookLibrary library = new BookLibrary();
+//        library.printAllBooks(); // Should print all 20 books sorted by title
+//
+//        System.out.println("\n=== Test 2: Get a book by index ===");
+//        Book b = library.get(0);
+//        System.out.println("First book in list (after sorting): " + b);
+//
+//        System.out.println("\n=== Test 3: Check total number of books ===");
+//        System.out.println("Total books loaded: " + library.size());
+//    }
 }

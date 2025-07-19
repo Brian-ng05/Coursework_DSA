@@ -38,4 +38,25 @@ public class OrderBook  {
     public String toString() {
         return (title + " by " + author + " x" + quantity);
     }
+
+
+//    public static void main(String[] args) {
+//        System.out.println("=== Test 1: Create valid OrderBook ===");
+//        OrderBook ob1 = new OrderBook("Clean Code", "Robert C. Martin", 45.0, 2);
+//        System.out.println("OrderBook: " + ob1);
+//        System.out.println("Total Price: $" + ob1.getTotalPrice());
+//
+//        System.out.println("\n=== Test 2: Update OrderBook fields ===");
+//        ob1.setTitle("Clean Architecture");
+//        ob1.setAuthor("Uncle Bob");
+//        ob1.setPrice(50.0);
+//        ob1.setQuantity(3);
+//        System.out.println("Updated OrderBook: " + ob1);
+//        System.out.println("New Total Price: $" + ob1.getTotalPrice());
+//
+//        System.out.println("\n=== Test 3: Edge case - quantity 0 ===");
+//        OrderBook ob2 = new OrderBook("Refactoring", "Martin Fowler", 60.0, 0);
+//        System.out.println("OrderBook: " + ob2);
+//        System.out.println("Total Price: $" + ob2.getTotalPrice());
+//    }
 }

@@ -109,5 +109,54 @@ public class OrderManager {
         return cancelledOrders.isEmpty();
     }
 
-
+//    public static void main(String[] args) {
+//        // Create OrderManager
+//        OrderManager manager = new OrderManager();
+//
+//        // Create a customer
+//        Customer customer = new Customer("John Doe", "123 Main Street", "+84901234567");
+//
+//        // Create a list of order books
+//        ArrayListADT<OrderBook> books = new ArrayListADT<>();
+//        books.add(new OrderBook("Clean Code", "Robert C. Martin", 35.99, 2));
+//        books.add(new OrderBook("Effective Java", "Joshua Bloch", 47.25, 1));
+//
+//        System.out.println("\n=== Test 1: Create Order ===");
+//        manager.createOrder(customer, books); // Create a new order
+//
+//        System.out.println("\n=== Test 2: Print All Orders ===");
+//        manager.printAllOrder();
+//
+//        System.out.println("\n=== Test 3: Process Next Order ===");
+//        manager.processNextOrder(); // Move the order to "PROCESSING" status
+//
+//        System.out.println("\n=== Test 4: Print Order History ===");
+//        manager.printOrderHistory(); // Show processed orders
+//
+//        System.out.println("\n=== Test 5: Cancel Last Order ===");
+//        manager.cancelLastOrder(); // Cancel the most recently processed order
+//
+//        System.out.println("\n=== Test 6: Print Cancelled Orders ===");
+//        manager.printCancelledOrders(); // Show cancelled orders
+//
+//        System.out.println("\n=== Test 7: Search by Order ID ===");
+//        Order found = manager.searchById(1001); // Example ID
+//        if (found != null) {
+//            System.out.println("Found: " + found);
+//        } else {
+//            System.out.println("Order not found.");
+//        }
+//
+//        System.out.println("\n=== Test 8: Search by Name or Phone ===");
+//        ArrayListADT<Order> results = manager.searchByNOrP("John");
+//        for (int i = 0; i < results.size(); i++) {
+//            System.out.println("Matched: " + results.get(i));
+//        }
+//
+//        System.out.println("\n=== Test 9: Check If Data Structures Are Empty ===");
+//        System.out.println("Is Order Queue Empty? " + manager.isOrderQueueEmpty());
+//        System.out.println("Is All Orders Empty? " + manager.isAllOrdersEmpty());
+//        System.out.println("Is Order History Empty? " + manager.isOrderHistoryEmpty());
+//        System.out.println("Is Cancelled Orders Empty? " + manager.isCancelledOrderEmpty());
+//    }
 }
