@@ -11,7 +11,7 @@ public class OnlineBookStore {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);        //Create a Scanner object to read user input
 
-        OrderManager manager = new OrderManager();  //Initialize order manager to handle order
+        OrderManager orderManager = new OrderManager();  //Initialize order manager to handle order
         BookLibrary books = new BookLibrary();      //Initialize book library (contains available books)
 
 
@@ -150,7 +150,7 @@ public class OnlineBookStore {
 
                         //If any books were selected, create the order
                         if (!selectedBooks.isEmpty()) {
-                            manager.createOrder(customer, selectedBooks);
+                            orderManager.createOrder(customer, selectedBooks);
                             System.out.println("Order created successfully!\n");
                             System.out.println();
                         } else {    //No books selected
@@ -161,8 +161,8 @@ public class OnlineBookStore {
 
 
                 case "2":       //View all orders
-                    if (!manager.isAllOrdersEmpty()) {
-                        manager.printAllOrder();
+                    if (!orderManager.isAllOrdersEmpty()) {
+                        orderManager.printAllOrder();
                     } else {
                         System.out.println("No orders have been placed yet.");
                         System.out.println();
@@ -171,8 +171,8 @@ public class OnlineBookStore {
 
 
                 case "3":       //Process the next order in queue
-                    if (!manager.isAllOrdersEmpty()) {
-                        manager.processNextOrder();
+                    if (!orderManager.isAllOrdersEmpty()) {
+                        orderManager.processNextOrder();
                     } else {
                         System.out.println("No orders have been placed yet.");
                         System.out.println();
@@ -181,8 +181,8 @@ public class OnlineBookStore {
 
 
                 case "4":       //View all orders in the queue
-                    if (!manager.isOrderQueueEmpty()) {
-                        manager.printOrderQueue();
+                    if (!orderManager.isOrderQueueEmpty()) {
+                        orderManager.printOrderQueue();
                     }else {
                         System.out.println("No order in queue yet.");
                         System.out.println();
@@ -191,8 +191,8 @@ public class OnlineBookStore {
 
 
                 case "5":        //View the order history (processed orders)
-                    if (!manager.isOrderHistoryEmpty()) {
-                        manager.printOrderHistory();
+                    if (!orderManager.isOrderHistoryEmpty()) {
+                        orderManager.printOrderHistory();
                     }else {
                         System.out.println("No order history yet.");
                         System.out.println();
@@ -201,8 +201,8 @@ public class OnlineBookStore {
 
 
                 case "6":       //Cancel the most recent processed order
-                    if (!manager.isOrderHistoryEmpty()) {
-                        manager.cancelLastOrder();
+                    if (!orderManager.isOrderHistoryEmpty()) {
+                        orderManager.cancelLastOrder();
                     }else {
                         System.out.println("No orders have been processed yet.");
                         System.out.println();
@@ -211,8 +211,8 @@ public class OnlineBookStore {
 
 
                 case "7":        //View cancelled orders
-                    if (!manager.isCancelledOrderEmpty()) {
-                        manager.printCancelledOrders();
+                    if (!orderManager.isCancelledOrderEmpty()) {
+                        orderManager.printCancelledOrders();
                     }else {
                         System.out.println("No cancelled order history yet.");
                         System.out.println();
@@ -247,7 +247,7 @@ public class OnlineBookStore {
                             continue;
                         }
 
-                        Order order = manager.searchById(orderId);      //Search order and display result
+                        Order order = orderManager.searchById(orderId);      //Search order and display result
                             if (order != null) {
                                 System.out.println(order);
                             } else {
@@ -257,7 +257,7 @@ public class OnlineBookStore {
                         System.out.print("Enter name or phone: ");
                         String input = sc.nextLine();
 
-                        ArrayListADT<Order> orders = manager.searchByNOrP(input);
+                        ArrayListADT<Order> orders = orderManager.searchByNOrP(input);
 
                         if (orders == null || orders.isEmpty()) {
                             System.out.println("Order not found.");
